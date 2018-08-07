@@ -31,7 +31,7 @@ namespace PingDevice
                         {
                             //Console.WriteLine("当前在线，已PING通！");
                             connMySql.Open();
-                            string comStr = "UPDATE tb_device SET `devStatus` = 1 WHERE id ='" + dt.Rows[i]["id"].ToString() + "' ";
+                            string comStr = "UPDATE tb_device SET `online` = 1 WHERE id ='" + dt.Rows[i]["id"].ToString() + "' ";
                             MySqlCommand comm = new MySqlCommand(comStr, connMySql);
                             int count = comm.ExecuteNonQuery();
                             connMySql.Close();
@@ -40,7 +40,7 @@ namespace PingDevice
                         {
                             //Console.WriteLine("不在线，PING不通！");
                             connMySql.Open();
-                            string comStr = "UPDATE tb_device SET `devStatus` = 0 WHERE id ='" + dt.Rows[i]["id"].ToString() + "' ";
+                            string comStr = "UPDATE tb_device SET `online` = 0 WHERE id ='" + dt.Rows[i]["id"].ToString() + "' ";
                             MySqlCommand comm = new MySqlCommand(comStr, connMySql);
                             int count = comm.ExecuteNonQuery();
                             connMySql.Close();
